@@ -10,14 +10,13 @@ export default (props) => {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
+    url: ''
   })
 
   const singleUserId = props.match.params.id
 
-
   useEffect(() => {
-    
     axios
       .get(`http://localhost:5000/user/${singleUserId}`)
       .then(result => setData([result.data]))
@@ -30,17 +29,17 @@ export default (props) => {
     })
   }
 
-  // handle update is broke
   const handleUpdate= async (e) => {
     e.preventDefault()
     await fetch(`http://localhost:5000/user/${singleUserId}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        'firstName':initialState.firstName,
-        'lastName':initialState.lastName,
-        'email':initialState.email,
-        'phone':initialState.phone    
+        'firstName': initialState.firstName,
+        'lastName': initialState.lastName,
+        'email': initialState.email,
+        'phone': initialState.phone,
+        'url': initialState.url  
       })
     })
     await setToHome(true)
@@ -66,7 +65,7 @@ export default (props) => {
             {' '}
             {user.url
               ? <img class="br-100 h4 w4 dib ba b--black-05 pa2" src={user.url} alt='user avatar'/>
-              : initials}{' '}
+              : <div>{initials}</div>}{' '}
           </span>
         ))}
       
@@ -136,6 +135,15 @@ export default (props) => {
                 />
               </div>
               <div>
+                <input 
+                  type="url" 
+                  name="url"
+                  placeholder="Picture URL" 
+                  value={initialState.url}
+                  onChange={handleChange} 
+                />
+              </div>
+              <div>
                 <input
                   type="submit"
                   value="Update"
@@ -152,7 +160,6 @@ export default (props) => {
         ))}      
         </>      
       )}
-   
     </>
   )
 }

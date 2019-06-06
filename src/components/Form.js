@@ -39,7 +39,7 @@ export default () => {
 
   return (
     <div class='centerthis'>
-      <h1>Add User</h1>
+      <h1 className='white'>Add User</h1>
       {toHome ? <Redirect to='/'/>:null}
       <form onSubmit={handleSubmit}>
         <div>

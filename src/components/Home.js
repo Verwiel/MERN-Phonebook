@@ -13,7 +13,7 @@ export default () => {
 
   return (
     <div className="App">
-      <h1>Contacts</h1>
+      <h1 className='white'>Contacts</h1>
       <div>
         {data.map((user, index) => (
             <User class='col' key={user._id} index={index} user={user} />

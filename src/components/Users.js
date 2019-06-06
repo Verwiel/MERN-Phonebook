@@ -11,7 +11,7 @@ const initials = props.user.firstName.charAt(0) + props.user.lastName.charAt(0)
             {' '}
             {props.user.url
               ? <img class='w2 h2 w3-ns h3-ns br-100' src={props.user.url} alt='user avatar'/>
-              : initials.toUpperCase()}{' '}
+              : <div class='w3-ns centerthis'>{initials.toUpperCase()}</div>}{' '}
           </span>
           <div class="pl3 flex-auto">
             <span class="f6 db black-70">{props.user.firstName} {props.user.lastName}</span>

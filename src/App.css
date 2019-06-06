@@ -5,7 +5,11 @@ h1 {
 }
 
 .centerthis {
-  text-align: center
+  text-align: center;
+}
+
+.white {
+  color: white;
 }
 
 .bb {
