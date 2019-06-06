@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 
 export default () => {
-  const [ogState, setState] = useState({
+  const [formState, setState] = useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -13,7 +13,7 @@ export default () => {
 
   const handleChange = e => {
     setState({
-      ...ogState,
+      ...formState,
       [e.target.name]: e.target.value
     })
   }
@@ -27,11 +27,11 @@ export default () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        'firstName':ogState.firstName,
-        'lastName':ogState.lastName,
-        'email':ogState.email,
-        'phone':ogState.phone,
-        'url': ogState.url
+        'firstName':formState.firstName,
+        'lastName':formState.lastName,
+        'email':formState.email,
+        'phone':formState.phone,
+        'url': formState.url
       })
     })
     await setToHome(true)
@@ -47,7 +47,7 @@ export default () => {
             type="text" 
             name="firstName"
             placeholder="First Name" 
-            value={ogState.firstName}
+            value={formState.firstName}
             onChange={handleChange}
             required 
           />
@@ -57,7 +57,7 @@ export default () => {
             type="text" 
             name="lastName"
             placeholder="Last Name" 
-            value={ogState.lastName}
+            value={formState.lastName}
             onChange={handleChange} 
           />
         </div>
@@ -66,7 +66,7 @@ export default () => {
             type="email" 
             name="email"
             placeholder="Email" 
-            value={ogState.email}
+            value={formState.email}
             onChange={handleChange} 
           />
         </div>
@@ -76,7 +76,7 @@ export default () => {
             name="phone"
             placeholder="Phone Number" 
             pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-            value={ogState.phone}
+            value={formState.phone}
             onChange={handleChange}
             required 
           />
@@ -86,7 +86,7 @@ export default () => {
             type="url" 
             name="url"
             placeholder="Picture URL" 
-            value={ogState.url}
+            value={formState.url}
             onChange={handleChange} 
           />
         </div>
@@ -96,7 +96,6 @@ export default () => {
           />
         </div>
       </form>
-      
       <a href="/">Home</a>
     </div>
   )

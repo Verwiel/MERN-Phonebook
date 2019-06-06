@@ -6,7 +6,7 @@ export default (props) => {
   const [toHome, setToHome] = useState(false)
   const [editState, setEdit] = useState(false)
   const [data, setData] = useState([])
-  const [ogState, setState] = useState({
+  const [initialState, setState] = useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -25,7 +25,7 @@ export default (props) => {
 
   const handleChange = e => {
     setState({
-      ...ogState,
+      ...initialState,
       [e.target.name]: e.target.value
     })
   }
@@ -37,10 +37,10 @@ export default (props) => {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        'firstName':ogState.firstName,
-        'lastName':ogState.lastName,
-        'email':ogState.email,
-        'phone':ogState.phone    
+        'firstName':initialState.firstName,
+        'lastName':initialState.lastName,
+        'email':initialState.email,
+        'phone':initialState.phone    
       })
     })
     await setToHome(true)
@@ -102,7 +102,7 @@ export default (props) => {
                   type="text" 
                   name='firstName'
                   placeholder={user.firstName}
-                  value={ogState.firstName}
+                  value={initialState.firstName}
                   onChange={handleChange}
                   required 
                 />
@@ -112,7 +112,7 @@ export default (props) => {
                   type="text" 
                   name="lastName"
                   placeholder={user.lastName}
-                  value={ogState.lastName}
+                  value={initialState.lastName}
                   onChange={handleChange} 
                 />
               </div>
@@ -121,7 +121,7 @@ export default (props) => {
                   type="email" 
                   name="email"
                   placeholder={user.email}
-                  value={ogState.email}
+                  value={initialState.email}
                   onChange={handleChange} 
                 />
               </div>
@@ -131,7 +131,7 @@ export default (props) => {
                   name="phone"
                   placeholder={user.phone}
                   pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                  value={ogState.phone}
+                  value={initialState.phone}
                   onChange={handleChange}               
                 />
               </div>
